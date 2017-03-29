@@ -1,0 +1,41 @@
+resource_registry:
+  OS::TripleO::Compute::Net::SoftwareConfig: /home/stack/templates/nic-configs/compute.yaml
+  OS::TripleO::Controller::Net::SoftwareConfig: /home/stack/templates/nic-configs/controller.yaml
+#  OS::TripleO::Network::Management: /usr/share/openstack-tripleo-heat-templates/network/ports/management.yaml
+#  OS::TripleO::Controller::Ports::ManagementPort: /usr/share/openstack-tripleo-heat-templates/network/ports/management_from_pool.yaml
+#  OS::TripleO::Compute::Ports::ManagementPort: /usr/share/openstack-tripleo-heat-templates/network/ports/management_from_pool.yaml
+
+parameter_defaults:
+#  MgmtBridgeName: "br-mgmt"
+  InternalApiNetCidr: 172.30.236.0/24
+  TenantNetCidr: 172.30.240.0/24
+  StorageNetCidr: 172.30.248.0/24
+  StorageMgmtNetCidr: 172.30.244.0/24
+  ExternalNetCidr: 10.238.0.0/24
+#  ManagementNetCidr: 10.242.0.0/24
+  InternalApiAllocationPools: [{'start': '172.30.236.54', 'end': '172.30.236.254'}]
+  TenantAllocationPools: [{'start': '172.30.240.54', 'end': '172.30.240.254'}]
+  StorageAllocationPools: [{'start': '172.30.248.54', 'end': '172.30.248.254'}]
+  StorageMgmtAllocationPools: [{'start': '172.30.244.54', 'end': '172.30.244.254'}]
+  # Leave room for floating IPs in the External allocation pool
+  ExternalAllocationPools: [{'start': '10.238.0.54', 'end': '10.238.0.254'}]
+  ManagementAllocationPools: [{'start': '10.242.0.54', 'end': '10.242.0.254'}]
+  InternalApiNetworkVlanID: 203
+  StorageNetworkVlanID: 206
+  StorageMgmtNetworkVlanID: 204
+  TenantNetworkVlanID: 205
+  ExternalNetworkVlanID: 202
+ # ManagementNetworkVlanID: 202
+  # Set to the router gateway on the external network
+  ExternalInterfaceDefaultRoute: 10.238.0.1
+  # Set to "br-ex" if using floating IPs on native VLAN on bridge br-ex
+  NeutronExternalNetworkBridge: "''"
+  # Customize bonding options if required
+  BondInterfaceOvsOptions: "mode=802.3ad ad_select=bandwidth lacp_rate=fast xmit_hash_policy=layer2 miimon=100"
+  ControlPlaneSubnetCidr: "24"
+  ControlPlaneDefaultRoute: 172.24.216.1
+  ControlPlaneIP: 172.24.216.51
+  EC2MetadataIp: 172.24.216.52
+  DnsServers: ['8.8.8.8', '8.8.4.4']
+  NeutronNetworkType: vxlan,vlan
+  NeutronEnableIsolatedMetadata: True

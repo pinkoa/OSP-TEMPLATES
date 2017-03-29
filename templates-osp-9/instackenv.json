@@ -1,0 +1,47 @@
+{
+        "nodes":[
+            {
+                "mac":[
+                    "d0:50:99:79:78:cf"
+                ],
+                "cpu":"4",
+                "memory":"16014",
+                "disk":"298",
+                "arch":"x86_64",
+                "name":"controller01",
+                "pm_type":"pxe_ipmitool",
+                "pm_user":"admin",
+                "pm_password":"admin",
+                "pm_addr":"172.24.204.102"
+            },
+            {
+                "mac":[
+                    "d0:50:99:79:79:01"
+                ],
+                "cpu":"4",
+                "memory":"16014",
+                "disk":"298",
+                "arch":"x86_64",
+                "name":"compute01",
+                "pm_type":"pxe_ipmitool",
+                "pm_user":"admin",
+                "pm_password":"admin",
+                "pm_addr":"172.24.204.103"
+            },
+            {
+                "mac":[
+                    "d0:50:99:c1:5e:bf"
+                ],
+                "cpu":"4",
+                "memory":"16014",
+                "disk":"108",
+                "arch":"x86_64",
+                "name":"compute02",
+                "pm_type":"pxe_ipmitool",
+                "pm_user":"admin",
+                "pm_password":"admin",
+                "pm_addr":"172.24.204.104"
+            }
+
+        ]
+}

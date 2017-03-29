@@ -1,2 +1,2 @@
 # OSP-TEMPLATES
-Diferent version templates for each of the OSP versions
+Templates used for OSP 9 mitaka release
